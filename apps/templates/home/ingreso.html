@@ -1,0 +1,383 @@
+
+{% extends 'layouts/base.html' %}
+
+{% block title %} Profile {% endblock title %}
+
+{% block content %}
+
+<div class="header pb-6 d-flex align-items-center" >
+  <!-- Mask -->
+  <!-- Header container -->
+
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--6">
+  <div class="row">
+    <div class="col-xl-12 order-xl-1">
+      <div class="card">
+        <div class="card-header">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <h3 class="mb-0">IDENTIFICACION CONSULTA EXTERNA </h3>
+        
+            </div>
+          </div>
+        </div>
+        <form action="/ingresar_personas/" method="POST"> {% csrf_token %}
+        <div class="card-body">
+          <form>
+            <h6 class="heading-small text-muted mb-4">Datos Personales</h6>
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-lg-5">
+                  <div class="form-group">            
+                    <label class="form-control-label" for="input-dni">Ingrese DNI</label>
+                    <input type="text" class="form-control input-lg" name="textDni" 
+                          id="textDni" placeholder="Documento . . ." required="" 
+                          minlength="8" maxlength="8" onkeyup="verificar_cuenta()" autocomplete="off">
+                  </div>
+                </div>
+<!--- 
+
+
+                <div class="text-center">
+                  <label class="form-control-label" for="input-dni"></label>
+                  <button type="button" class="btn btn-primary my-4" onclick="consulta_documento()" >Consultar</button>
+                </div>
+-->
+                
+                <div>
+                </div>   
+              </div>
+              <div class="row">
+                <div class="col-lg-3"> <!-- nombres-->
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-first-name">Nombres</label>
+                    <input type="text" id="textNombres" name="textNombres" class="form-control" placeholder="Nombres" value="">
+                  </div>
+                </div>
+                <div class="col-lg-3"> <!-- APELLIDO paterno-->
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-last-name">Apellido Paterno</label>
+                    <input type="text" id="textApellidoPaterno", name="textApellidoPaterno" class="form-control" placeholder="Apellido Paterno" value="">
+                  </div>
+                </div>
+                <div class="col-lg-3"> <!-- APELLIDO MATERNO-->
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-first-name">Apellido Materno</label>
+                    <input type="text" id="textApellidoMaterno" name="textApellidoMaterno" class="form-control" placeholder="Apellido Materno" value="">
+                  </div>
+                </div>
+                <div class="col-lg-3"> <!-- Fecha de Nacimiento-->   
+                  <div class="">
+                    <label class="form-control-label" for="">Fecha de Nacimiento: Año-mes-dia</label>
+                    <input type="text" id="datepicker" name="textFechaNacimiento"class="form-control"  placeholder="Año-mes-dia" >
+                  </div>
+                </div>
+                
+              </div>
+              <div class="row">
+                <div class="col-lg-3"> <!-- Estado Civil-->
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-last-name">Sexo</label>
+                      <p>
+                      <select name="textSexo"  type="text" id="textSexo" class="form-control">
+                        <option>Masculino</option>
+                        <option>Femennino</option>
+                        <option>Prefiero no Declarar</option>
+                        <option>No Binario</option>
+                      </select> </p>
+                    </div>
+                  </div>
+                <div class="col-lg-3"> <!-- Edad-->
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-last-name">Edad</label>
+                    <input type="number" id="textEdad" name= "textEdad" class="form-control" placeholder="Edad" value="Jesse">
+                  </div>
+                </div>
+                <div class="col-lg-3"> <!-- Edad-->
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-last-name">Correo Electronico</label>
+                    <input type="email" id="textEmail" name= "textEmail" class="form-control" placeholder="Edad" value="Jesse">
+                  </div>
+                </div>
+
+              </div>
+              <div class="row">
+                <div class="col-lg-3"> <!-- Lugar de Nacimiento-->
+                    
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-first-name">Lugar de Nacimiento</label>
+                    <input type="text" id="textLugarNacimiento" name="textLugarNacimiento" class="form-control" placeholder="Lugar de Nacimiento" value="">
+                  </div>
+                  
+                </div>
+                <div class="col-lg-3"> <!-- Departamento-->
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-last-name">Departamento</label>
+                      <input type="text" id="textDepartamento" name="textDepartamento" class="form-control" placeholder="Departamento" >
+                    </div>
+                  </div>
+
+                <div class="col-lg-3"> <!-- Provincia-->
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-first-name">Provincia</label>
+                    <input type="text" id="textProvincia" name="textProvincia" class="form-control" placeholder="Provincia">
+                  </div>
+                </div>
+
+                <div class="col-lg-3"> <!-- Distrito-->
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-last-name">Distrito</label>
+                      <input type="text" id="textDistrito" name="textDistrito" class="form-control" placeholder="Distrito">
+                    </div>
+                  </div>
+
+              </div>
+              <div class="row">
+                <div class="col-lg-3"> <!-- Nacionalidad-->
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-first-name">Nacionalidad</label>
+                    <input type="text" id="textNacionalidad" name="textNacionalidad" class="form-control" placeholder="Nacionalidad" value="">
+                  </div>
+                </div>
+                <div class="col-lg-3"> <!-- Estado Civil-->
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-last-name">Estado Civil</label>
+                    <p>
+                    <select name="textEstadoCivil"  type="text" id="textEstadoCivil" class="form-control">
+                      <option>Soltero/a</option>
+                      <option>Casado/a</option>
+                      <option>Viudo/a</option>
+                      <option>Divorciado/a</option>
+                    </select> </p>
+                  </div>
+                </div>
+                <div class="col-lg-3"> <!-- Grado Instruccion-->
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-first-name">Grado Instruccion</label>
+                    <input type="text" id="textGradoInstrucion" name="textGradoInstrucion" 
+                    class="form-control" placeholder="Grado Instruccion">
+                  </div>
+                </div>
+                <div class="col-lg-3"> <!-- Ocupacion-->
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-last-name">Ocupacion</label>
+                    <input type="text" id="textOcupacion" name="textOcupacion" class="form-control" placeholder="Ocupacion">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-7"> <!-- Domicilio-->
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-first-name">Domicilio</label>
+                    <input type="text" id="textDomicilio" name="textDomicilio" class="form-control" placeholder="Jr/Calle/Caserio/CPM">
+                  </div>
+                </div>
+
+                <div class="col-lg-5"> <!-- Telefono-->
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-first-name">Telefono / Celular</label>
+                    <input type="phone" id="textCelular" name="textCelular" class="form-control" placeholder="Telefono" value="">
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <hr class="my-4" />
+            <!-- Address -->
+            <h6 class="heading-small text-muted mb-1">Datos de Seguro de Salud: Tipo de Seguro</h6>
+            <div class="pl-lg-12">
+              <div class="row">
+                <div class="col-lg"> <!-- Asegurado-->
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-first-name"></label>
+                    <p><input type="radio" name="textEssalud" id="textEssalud" value="h"> EsSALUD </p>
+                  </div>
+                </div>
+                <div class="col-lg-1"> <!-- Asegurado-->
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-first-name"> </label>
+                    <p><input type="radio" name="textSis" i?="textSis" value="m"> SIS </p>
+                  </div>
+                </div>
+
+                <div class="col-lg-2"> <!-- Asegurado-->
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-first-name"> </label>
+                    <p><input type="radio" name="textParticular" id="textParticular" value="m"> Particular</p>
+                  </div>
+                </div>
+                <div class="col-lg-3"> <!-- Asegurado-->
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-first-name"> </label>
+                    <p><input type="radio" name="textSinSeguro" id="textSinSeguro" value="m"> No Cuenta Con seguro </p>
+                  </div>
+                </div>
+
+
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-address">Numero de Seguro</label>
+                    <input id="textNumeroSeguro" name="textNumeroSeguro" class="form-control" placeholder="Numero de Seguro" value="" type="text">
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <hr class="my-4" />
+            <!-- Address -->
+            <h6 class="heading-small text-muted mb-4">Informacion de Contacto</h6>
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-address">Centro de Trabajo</label>
+                    <input id="textCentroTrabajo" name="textCentroTrabajo" class="form-control" placeholder="Centro de Trabajo" value="" type="text">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-address">Direccion de Trabajo</label>
+                    <input id="textDomicilioTrabajo" id="textDomicilioTrabajo" class="form-control" placeholder="Direccion de Trabajo" type="text">
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-address">Nombres y Apellidos del Padre</label>
+                    <input id="texDatosPadre" name="texDatosPadre" class="form-control" placeholder="Nombres y Apellidos del Padre" value="" type="text">
+                  </div>
+                </div>
+                <div class="col-lg-2"> <!-- -->
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-last-name">Estado</label>
+                    <p>
+                    <select name="textEstadoPadre"  type="text" id="textEstadoPadre" class="form-control">
+                      <option>Vivo</option>
+                      <option>Fallecido</option>
+                    </select> </p>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-address">Nombres y Apellidos de la Madre</label>
+                    <input id="texDatosMadre" name="texDatosMadre" class="form-control" placeholder="Nombres y Apellidos de la Madre" value="" type="text">
+                  </div>
+                </div>
+                <div class="col-lg-2"> <!-- -->
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-last-name">Estado</label>
+                    <p>
+                    <select name="textEstadoMadre"  type="text" id="textEstadoMadre" class="form-control">
+                      <option>Vivo</option>
+                      <option>Fallecido</option>
+                    </select> </p>
+                  </div>
+                </div>
+              </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-address">En Caso de Urgencia Notificar a :</label>
+                      <input type="phone" id="textTelefonoParentesco" name="textTelefonoParentesco" class="form-control" placeholder="Telefono">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-address">Direccion</label>
+                      <input id="textDireccionParentesco" class="form-control" placeholder="Direccion de Trabajo" name="textDireccionParentesco" type="text">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-address">Parentesco</label>
+                      <input id="textParentescoContacto" class="form-control" placeholder="Parentesco" name="textParentescoContacto" type="text">
+                    </div>
+                  </div>
+                </div>          
+            </div>
+            <hr class="my-4" />
+            <!-- Description -->
+            <h6 class="heading-small text-muted mb-4">Detalle de Consulta</h6>
+            <div class="pl-lg-4">
+              <div class="form-group">
+                <label class="form-control-label">REGISTRAR EN CADA CONSULTA EXTERNA LOS SIGUIENTES 
+                  DATOS :   1. FECHA,  2. EDAD,  3. PESO,  4. TALLA,  5. TEMPERATURA,  
+                  6. P/A, 7. SINTOMAS Y SIGNOS PRINCIPALES, DIAGNOSTICO Y TRATAMIENTOS,  
+                  8. NOMBRE Y FIRMA DEL PERSONAL QUE BRINDA LA ATENCIÓN</label>
+                <textarea  type="text" id="textDiagnostico", name="textDiagnostico" rows="15" class="form-control" placeholder="..."></textarea>
+              </div>
+            </div>
+            <hr class="my-4" />
+            <div class="pl-lg-4">
+                <div class="row">
+                  <div class="col-md-5">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-address"> </label>
+                      <button type="submit" class="btn btn-primary btn-lg btn-block btn-consulta" 
+                      onclick="consulta_documento()"><i class="icon-magnifier"></i>Enviar</button>
+                    </div>
+                  </div>
+
+                  <div class="col-md-5">
+                    <div class="form-group">
+                      <label class="form-control-label" for="input-cita">Fecha de Cita</label>
+                      <input type="datetime" id="" class="form-control">
+                    </div>
+                  </div>
+                
+              </div>
+          </form>
+            <hr class="my-4" />
+              <P>ATENCION !</P>
+              <p> Debe Presentar los documentos que acrediten el diagnotico emitido por el medico tratante</p>
+              
+            <hr class="my-4" />
+           
+           
+              <div class="form-group">
+             
+                  <P>CITA: JR. RICARDO PALMA CDRA 12 LOCAL CENTRAL DEL ADULTO MAYOR (CIAM)</P>
+                 <p> FECHA: 8 DE JUNIO DEL 2023</p>
+                <p>HORA: 8:00 AM</p>  
+
+              </div>
+      
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% include "includes/footer.html" %}
+
+</div>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <script>
+  $( function() {
+      $( "#datepicker" ).datepicker();
+        $( "#datepicker" ).datepicker( "option", "dateFormat", 'yy-mm-dd');
+        $( "#datepicker" ).datepicker( "option", "defaultDate", "2010-01-01");
+        $( "#datepicker" ).datepicker( "option", "changeMonth", true);
+        $( "#datepicker" ).datepicker( "option", "changeYear", true);
+      } );
+
+    </script>
+{% endblock javascripts %}

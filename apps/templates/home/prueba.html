@@ -1,0 +1,162 @@
+
+{% extends 'layouts/base.html' %}
+
+{% block title %}  {% endblock title %}
+
+{% block content %}
+
+<div class="header pb-6 d-flex align-items-center" >
+
+
+  
+
+</div>
+
+<div class="container-fluid mt--6">
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <!-- Card header -->
+        <div class="card-header border-0">
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                
+                {% block buscador %}
+                <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" method="POST">
+                {% csrf_token %}
+                      <div class="input-group">
+                                <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar Persona..." 
+                                name="buscar" value="{{ request.POST.buscar }}">
+                                <div class="input-group-append">
+                                            <button class="btn btn-primary" type="submit">
+                                              <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                </div>
+                      </div>
+                  </form>
+              </div>
+              <div class="col col-lg-2">                        
+                <a href="{% url 'Personas_Forms' %}" class="btn btn-sm btn-neutral">Registrar Nuevo</a>     
+               </div>
+
+            </div>
+          </div>   
+        </div>
+
+
+
+{% endblock buscador %}
+        
+
+        <!-- Light table -->
+        <div class="table-responsive">
+          <table class="table align-items-center table-flush">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col" class="sort" data-sort="">#</th>
+                <th scope="col" class="sort" data-sort="name">DNI</th>
+                <th scope="col" class="sort" data-sort="budget">Apellidos y Nombres</th>        
+                <th scope="col" class="sort" data-sort="status">Domicilio</th>
+                <th scope="col" class="sort" data-sort="completion">Telefono</th>
+                <th scope="col" class="sort" data-sort="status">Diagnostico</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for personas in personas %}
+
+              <tr>
+                <td>{{ personas.id }}</td>
+                <td>{{ personas.dni }}</td>
+                <td>{{ personas.nombre_completo }}</td>     
+                <td>{{ personas.domicilio }}</td>
+                <td>{{ personas.telefono }}</td>
+                <td>{{ personas.diagnostico }}</td>
+                <td class="text-right">
+                  <div class="dropdown">
+                    <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-ellipsis-v"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                      <!---
+                      <a class="dropdown-item" href="edicionPersona/{{personas.id}}">Editar</a>
+                      <a class="dropdown-item" href="{% url 'Editar_Forms' personas.id %}">Imprimir Constancia </a>
+                      
+                      -->
+                      <a class="dropdown-item" href="{% url 'ReposrtePDF' personas.id %}">Imprimir Constancia</a>
+                    </div>
+                  </div>
+                </td>
+
+              </tr>
+
+
+
+
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <!-- Card footer -->
+<!--
+
+        <div class="card-footer py-4">
+          <nav aria-label="...">
+            <ul class="pagination justify-content-end mb-0">
+              <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1">
+                  <i class="fas fa-angle-left"></i>
+                  <span class="sr-only">Previous</span>
+                </a>
+              </li>
+              <li class="page-item active">
+                <a class="page-link" href="#">1</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#">
+                  <i class="fas fa-angle-right"></i>
+                  <span class="sr-only">Next</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+-->
+      </div>
+    </div>
+  </div>
+
+
+  {% include "includes/footer.html" %}
+
+</div>
+<!-- Page content -->
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <script>
+  $( function() {
+      $( "#datepicker" ).datepicker();
+        $( "#datepicker" ).datepicker( "option", "dateFormat", 'yy-mm-dd');
+        $( "#datepicker" ).datepicker( "option", "defaultDate", "2010-01-01");
+        $( "#datepicker" ).datepicker( "option", "changeMonth", true);
+        $( "#datepicker" ).datepicker( "option", "changeYear", true);
+      } );
+
+    </script>
+{% endblock javascripts %}

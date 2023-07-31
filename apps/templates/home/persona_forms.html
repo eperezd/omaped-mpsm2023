@@ -1,0 +1,169 @@
+{% extends "layouts/base.html" %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<form action="" method="post" autocomplete="on">
+      {% csrf_token %}
+      <div class="container">
+        <p>   </p>
+
+        <h3 class="mb-0">IDENTIFICACION CONSULTA EXTERNA </h3>
+        <p>   </p>
+
+        <h6 class="heading-small text-muted mb-4">Datos Personales</h6>
+        <hr class="my-4" />
+        <div class="row align-items-center">
+          
+          <div class="col">
+            {{form_personas.dni|as_crispy_field}} <!--  1-->
+          </div>
+          <div class="col" >
+          
+          </div>          
+        </div>   
+        
+        <div class="row">
+            <div class="col-md-4">
+              {{form_personas.nombres|as_crispy_field}}<!--  2-->
+            </div>
+            <div class="col-md-4">
+              {{form_personas.apellido_paterno|as_crispy_field}} <!--  3-->
+            </div>
+            <div class="col-md-4">
+              {{form_personas.apellido_materno|as_crispy_field}} <!--  4-->
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+              {{form_personas.fecha_nacimiento|as_crispy_field}} <!--  5-->
+          </div>
+          <div class="col-md-6">
+              {{form_personas.correo|as_crispy_field}} <!--  6-->
+          </div>
+          <div class="col-md-2">
+            {{form_personas.edad|as_crispy_field}} <!--  7-->
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+            {{form_personas.lugar_nacimiento|as_crispy_field}} <!--  25-->
+        </div>
+        <div class="col-md-4">
+            {{form_personas.telefono|as_crispy_field}} <!--  26-->
+        </div>
+        <div class="col-md-4">
+          {{form_personas.sexo|as_crispy_field}} <!--  27-->
+      </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+            {{form_personas.nacionalidad|as_crispy_field}} <!--  9-->
+        </div>
+        <div class="col-md-4">
+            {{form_personas.grado_instruccion|as_crispy_field}} <!--  10-->
+        </div>
+        <div class="col-md-4">
+          {{form_personas.estado_civi|as_crispy_field}} <!--  24--> <!--  10-->
+      </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+            {{form_personas.ocupacion|as_crispy_field}} <!--  11-->
+        </div>
+        <div class="col-md-8">
+            {{form_personas.domicilio|as_crispy_field}} <!--12-->
+        </div>
+      </div>
+      <div class="col-md-4">
+       
+    </div>
+      <hr class="my-4" />
+      
+
+      <div class="row">
+        <div class="col-md-4">
+            {{form_personas.centro_trabajo|as_crispy_field}} <!-- 13-->
+        </div>
+        <div class="col-md-8">
+            {{form_personas.direccion_laboral|as_crispy_field}} <!--14-->
+        </div>
+      </div>
+      <hr class="my-4" />
+      <h6 class="heading-small text-muted mb-4">Datos del Seguro</h6>
+      <div class="row">
+        <div class="col-md-4">
+            {{form_personas.tipo_Seguro|as_crispy_field}} <!--15-->
+        </div>
+        <div class="col-md-8">
+            {{form_personas.numero_Seguro|as_crispy_field}} <!--16-->
+        </div>
+      </div>
+      <hr class="my-4" />
+      <h6 class="heading-small text-muted mb-4">Contacto de los Padres</h6>
+      <div class="row">
+        <div class="col-md-6">
+            {{form_personas.nombres_apellidos_Padre|as_crispy_field}} <!--  17-->
+        </div>
+        <div class="col-md-6">
+            {{form_personas.nombres_apellidos_Madre|as_crispy_field}} <!-- 18-->
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          {{form_personas.estado_padre|as_crispy_field}} <!--  22-->
+      </div>
+        <div class="col-md-4">
+            {{form_personas.estado_madre|as_crispy_field}} <!--  23-->
+        </div>
+
+      </div>
+      <hr class="my-4" />
+      <h6 class="heading-small text-muted mb-4">Contacto en Emergencia</h6>
+      <div class="row">
+        <div class="col-md-6">
+            {{form_personas.contacto_urgencia|as_crispy_field}} <!--19-->
+        </div>
+        <div class="col-md-6">
+          {{form_personas.parentesco|as_crispy_field}} <!-- 21-->
+      </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-md-12">
+          {{form_personas.dirección_contacto|as_crispy_field}} <!--  20-->
+      </div>
+
+      </div>
+
+
+
+      
+
+      <div class="row">
+        <div class="col-md-4">
+         
+        </div>
+        <div class="col-md-12">
+            {{form_personas.diagnostico|as_crispy_field}} <!--  8-->
+        </div>
+      </div>
+        <div class="row">
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-success btn-block btn-lg"><i class="fas fa-database"></i>
+                    Guardar</button>
+            </div>
+            <div class="col-md-4">
+                <a href="{% url 'lista' %}" class="btn btn-secondary btn-block btn-lg">
+                    <i class="fas fa-stream"></i> Cancelar
+                </a>
+            </div>
+        </div>
+    
+    
+      </div>
+</form>
+{% endblock content %}
+

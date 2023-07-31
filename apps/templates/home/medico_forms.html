@@ -1,0 +1,54 @@
+{% extends "layouts/base.html" %}
+{% load crispy_forms_tags %}
+  
+
+{% block content %}
+<form action="" method="post" autocomplete="off">
+      {% csrf_token %}
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col">
+        {{formmedicos.dni_Medico|as_crispy_field}}
+      </div>
+      <label  type="submit" class="btn btn-primary" href="buscarDni/{{medico.dni_Medico}}">buscar</label>
+
+
+      <div class="col" >
+        {{formmedicos.nombres_medico|as_crispy_field}}
+      </div>
+      
+    </div>   
+    
+    <div class="row">
+        <div class="col-md-4">
+            {{formmedicos.apeliido_paterno_medico|as_crispy_field}}
+        </div>
+        <div class="col-md-8">
+            {{formmedicos.apeliido_materno_medico|as_crispy_field}}
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+          {{formmedicos.colegiatura_medico|as_crispy_field}}
+      </div>
+      <div class="col-md-8">
+          {{formmedicos.tipo_medico|as_crispy_field}}
+      </div>
+  </div>
+    <div class="row">
+        <div class="col-md-8">
+            <button type="submit" class="btn btn-success btn-block btn-lg"><i class="fas fa-database"></i>
+                Submit</button>
+        </div>
+        <div class="col-md-4">
+            <a href="{% url 'lista' %}" class="btn btn-secondary btn-block btn-lg">
+                <i class="fas fa-stream"></i> Back to list
+            </a>
+        </div>
+    </div>
+
+
+  </div>
+
+</form>
+{% endblock content %}

@@ -1,0 +1,141 @@
+{% extends 'layouts/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<form action="" method="post" autocomplete="off">
+    {% csrf_token %}
+<div class="container">
+  <div class="row align-items-start">
+    <div class="col">
+      {{ form_personas.dni|as_crispy_field }}
+    </div>
+    <div class="col">
+     
+    </div>
+    <div class="col">
+  
+    </div>
+  </div>
+  <div class="row align-items-start">
+    <div class="col">
+      {{ form_personas.nombres|as_crispy_field }}
+    </div>
+    <div class="col">
+      {{ form_personas.apellido_paterno|as_crispy_field }}
+    </div>
+    <div class="col">
+      {{ form_personas.apellido_materno|as_crispy_field }}
+    </div>
+  </div>
+  <div class="row align-items-center">
+    <div class="col">
+      {{ form_personas.sexo|as_crispy_field }}
+    </div>
+    <div class="col" >
+      {{ form_personas.fecha_nacimiento|as_crispy_field }}
+    </div>
+    <div class="col">
+      {{ form_personas.grado_instruccion|as_crispy_field }}  
+    </div>
+  </div>
+  <div class="row align-items-end">
+    <div class="col">
+      {{ form_personas.lugar_nacimiento|as_crispy_field }}  
+    </div>
+    <div class="col">
+      {{ form_personas.telefono|as_crispy_field }} 
+    </div>
+    <div class="col">
+      {{ form_personas.edad|as_crispy_field }}  
+    </div>
+  </div>
+  <div class="row align-items-end">
+    <div class="col">
+      {{ form_personas.correo|as_crispy_field }}  
+    </div>
+    <div class="col">
+      {{ form_personas.nacionalidad|as_crispy_field }} 
+    </div>
+    <div class="col">
+      {{ form_personas.ocupacion|as_crispy_field }}  
+    </div>
+  </div>
+  <div class="row align-items-end">
+    <div class="col">
+      {{ form_personas.tipo_Seguro|as_crispy_field }}  
+    </div>
+    <div class="col">
+      {{ form_personas.numero_Seguro|as_crispy_field }} 
+    </div>
+    <div class="col">
+      {{ form_personas.direccion_laboral|as_crispy_field }}  
+    </div>
+  </div>
+  <div class="row align-items-end">
+    <div class="col">
+      {{ form_personas.nombres_apellidos_Padre|as_crispy_field }}  
+    </div>
+    <div class="col">
+      {{ form_personas.nombres_apellidos_Madre|as_crispy_field }} 
+    </div>
+    <div class="col">
+      {{ form_personas.contacto_urgencia|as_crispy_field }}  
+    </div>
+  </div>
+
+  <div class="row align-items-end">
+    <div class="col">
+      {{ form_personas.dirección_contacto|as_crispy_field }}  
+    </div>
+    <div class="col">
+      {{ form_personas.parentesco|as_crispy_field }} 
+    </div>
+    <div class="col">
+      {{ form_personas.estado_civi|as_crispy_field }}  
+    </div>
+  </div>
+
+  <div class="row align-items-end">
+    <div class="col">
+      {{ form_personas.estado_padre|as_crispy_field }}  
+    </div>
+    <div class="col">
+      {{ form_personas.estado_madre|as_crispy_field }} 
+    </div>
+    <div class="col">
+      {{ form_personas.diagnostico|as_crispy_field }}  
+    </div>
+  </div>
+
+  <div class="col-md-8">
+    <button type="submit" class="btn btn-success">
+      <i class="fas fa-database"></i>  Guardar </button>
+  </div>
+  <div class="col-md-4">
+    <a href="{% url 'lista' %}" class="btn btn-secondary">
+        <i class="fas fa-stream"></i> Cancelar
+    </a>
+</div>
+</div>
+</form>
+{% endblock content %}
+
+{% block javascripts %}
+
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <script>
+  $( function() {
+      $( "#datepicker" ).datepicker();
+        $( "#datepicker" ).datepicker( "option", "dateFormat", 'yy-mm-dd');
+        $( "#datepicker" ).datepicker( "option", "defaultDate", "2010-01-01");
+        $( "#datepicker" ).datepicker( "option", "changeMonth", true);
+        $( "#datepicker" ).datepicker( "option", "changeYear", true);
+      } );
+
+    </script>
+{% endblock %}

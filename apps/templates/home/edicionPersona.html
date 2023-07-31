@@ -1,0 +1,175 @@
+{% extends "layouts/base.html" %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<form action="/editarPersona/" method="POST" autocomplete="on">
+      {% csrf_token %}
+      <div class="container">
+        <p>   </p>
+
+        <h3 class="mb-0">IDENTIFICACION CONSULTA EXTERNA </h3>
+        <p>   </p>
+
+        <h6 class="heading-small text-muted mb-4">Datos Personales</h6>
+        <hr class="my-4" />
+        <div class="row align-items-center">
+          <div class="col">
+            <input type="text" class="form-control" placeholder="" name="textId" id="textId" value="{{personas.id}}"> <!--  1-->
+          </div>
+          <div class="col" >
+          
+          <div class="col">
+            <input type="" class="form-control" placeholder="" id="textDni" value="{{personas.dni}}"> <!--  1-->
+          </div>
+          <div class="col" >
+          
+          </div>          
+        </div>   
+        
+        <div class="row">
+            <div class="col-md-4">
+                <input type="" class="form-control" placeholder="" id="textNombres" value="{{personas.nombres}}" >
+          
+            </div>
+            <div class="col-md-4">
+                <input type="" class="form-control" placeholder="" id="textApellidoMaterno" value="{{personas.apellido_paterno}}">
+            </div>
+            <div class="col-md-4">
+                <input type="" class="form-control" placeholder="" id="textApellidoMaterno" value="{{personas.apellido_materno}}">
+ 
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <input type="" class="form-control" placeholder="" id="textFechaNacimiento" value="{{personas.fecha_nacimiento}}">
+        
+          </div>
+          <div class="col-md-6">
+            <input type="" class="form-control" placeholder="" id="textCorreo" value="{{personas.correo}}">
+
+          </div>
+          <div class="col-md-2">
+            <input type="" class="form-control" placeholder="" id="textEdad" value="{{personas.edad}}">
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+            <input type="" class="form-control" placeholder="" id="textLugarNacimiento" value="{{personas.lugar_nacimiento}}">
+
+        </div>
+        <div class="col-md-4">
+            <input type="" class="form-control" placeholder="" id="textTelefono" value="{{personas.telefono}}">
+
+        </div>
+        <div class="col-md-4">
+            <input type="" class="form-control" placeholder="" id="textSexo" value="{{personas.sexo}}">
+
+      </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+            <input type="" class="form-control" placeholder="" id="textNacionalidad" value="{{personas.nacionalidad}}">
+        </div>
+        <div class="col-md-4">
+            <input type="" class="form-control" placeholder="" id="textGradoInstruccion" value="{{personas.grado_instruccion}}">
+        </div>
+        <div class="col-md-4">
+            <input type="" class="form-control" placeholder="" id="textOcupacion" value="{{personas.ocupacion}}">
+      </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+           
+        </div>
+        <div class="col-md-8">
+            <input type="" class="form-control" placeholder="" id="textDomicilio" value="{{personas.domicilio}}">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <input type="" class="form-control" placeholder="" id="textEstadoCivil" value="{{personas.estado_civi}}">
+    </div>
+      <hr class="my-4" />
+      
+
+      <div class="row">
+        <div class="col-md-4">
+            <input type="" class="form-control" placeholder="" id="textCentroTrabajo" value="{{personas.centro_trabajo}}">
+        </div>
+        <div class="col-md-8">
+            <input type="" class="form-control" placeholder="" id="textDomicilioTrabajo" value="{{personas.direccion_laboral}}">
+        </div>
+      </div>
+      <hr class="my-4" />
+      <h6 class="heading-small text-muted mb-4">Datos del Seguro</h6>
+      <div class="row">
+        <div class="col-md-4">
+            <input type="" class="form-control" placeholder="" id="textTipoSeguro" value="{{personas.tipo_seguro}}">
+        </div>
+        <div class="col-md-8">
+            <input type="" class="form-control" placeholder="" id="textNumeroSeguro" value="{{personas.numero_seguro}}">
+        </div>
+      </div>
+      <hr class="my-4" />
+      <h6 class="heading-small text-muted mb-4">Contacto de los Padres</h6>
+      <div class="row">
+        <div class="col-md-6">
+            <input type="" class="form-control" placeholder="" id="texDatosPadre" value="{{personas.nombres_apellidos_Padre}}">
+        </div>
+        <div class="col-md-6">
+            <input type="" class="form-control" placeholder="" id="texDatosMadre" value="{{personas.nombres_apellidos_Madre}}">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+            <input type="" class="form-control" placeholder="" id="textEstadoPadre" value="{{personas.estado_padre}}">
+      </div>
+        <div class="col-md-4">
+            <input type="" class="form-control" placeholder="" id="textEstadoMadre" value="{{personas.estado_madre}}">
+        </div>
+
+      </div>
+      <hr class="my-4" />
+      <h6 class="heading-small text-muted mb-4">Contacto en Emergencia</h6>
+      <div class="row">
+        <div class="col-md-6">
+            <input type="" class="form-control" placeholder="" id="textTelefonoParentesco" value="{{personas.contacto_urgencia}}">
+        </div>
+        <div class="col-md-6">
+            <input type="" class="form-control" placeholder="" id="textParentescoContacto" value="{{personas.parentesco}}">
+      </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-md-12">
+            <input type="" class="form-control" placeholder="" id="textDireccionParentesco" value="{{personas.dirección_contacto}}">
+      </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+         
+        </div>
+        <div class="col-md-12">
+            <input type="" class="form-control" placeholder="" id="textDiagnostico" value="{{personas.diagnostico}}">
+        </div>
+      </div>
+        <div class="row">
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-success btn-block btn-lg"><i class="fas fa-database"></i>
+                    Guardar</button>
+            </div>
+            <div class="col-md-4">
+                <a href="{% url 'lista' %}" class="btn btn-secondary btn-block btn-lg">
+                    <i class="fas fa-stream"></i> Cancelar
+                </a>
+            </div>
+        </div>
+    
+    
+      </div>
+</form>
+{% endblock content %}
+

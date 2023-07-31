@@ -1,0 +1,101 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Tables {% endblock title %}
+
+{% block content %}
+
+<div class="header pb-6 d-flex align-items-center" >
+  <!-- Mask -->
+  <!-- Header container -->
+
+</div>
+  
+  <!-- Page content -->
+  <div class="container-fluid mt--6">
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <!-- Card header -->
+          <div class="card-header border-0">
+            <div class="container">
+              <div class="row">
+                <div class="col">
+                  <h3 class="mb-0">Lista de Medicos</h3>
+                </div>
+                <div class="col-md-auto">
+                  
+                </div>
+                <div class="col col-lg-2">                          
+                  
+                    <a href="{% url 'Medico_Forms' %}" class="btn btn-sm btn-neutral">Registrar Nuevo</a>
+                    
+        
+                </div>
+              </div>
+            </div>      
+          </div>
+
+          <!-- Light table -->
+          <div class="table-responsive">
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col" class="sort" data-sort="">#</th>
+                  <th scope="col" class="sort" data-sort="name">DNI</th>
+                  <th scope="col" class="sort" data-sort="budget">Apellidos y Nombres</th>
+                  <th scope="col" class="sort" data-sort="status">Domicilio</th>
+                  <th scope="col" class="sort" data-sort="completion">Telefono</th>
+                  <th scope="col" class="sort" data-sort="status">Contacto urgencia</th>
+                  
+                  <th scope="col" class="sort" data-sort="status">Contacto urgencia</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for medicos in medicos %}
+                <tr>
+                  <td>{{ medicos.id }}</td>
+                  <td>{{ medicos.dni_Medico }}</td>
+                  <td>{{ medicos.nombres_medico }}</td>
+       
+                  <td>{{ medicos.apeliido_paterno_medico }}</td>
+                  <td>{{ medicos.apeliido_materno_medico }}</td>
+                  <td>{{ medicos.colegiatura_medico }}</td>
+                  <td>{{ medicos.tipo_medico }}</td>
+                  <td class="text-right">
+                    <div class="dropdown">
+                      <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-ellipsis-v"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                        <a class="dropdown-item" href="#">Editar</a>
+                        <a class="dropdown-item" href="#">Ver Certificado</a>
+                        <a class="dropdown-item" href="#">Separa Cita</a>
+                      </div>
+                    </div>
+                  </td>
+
+                </tr>
+
+
+
+
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          <!-- Card footer -->
+
+        </div>
+      </div>
+    </div>
+
+
+    {% include "includes/footer.html" %}
+
+  </div>
+
+{% endblock content %}
+
+<!-- Specific JS goes HERE --> 
+{% block javascripts %}{% endblock javascripts %}
